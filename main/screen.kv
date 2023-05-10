@@ -1,0 +1,55 @@
+WindowManager:
+    StartWindow:
+    MainWindow:
+
+<StartWindow>:
+    name: "start"
+
+    volume: volume
+    ground_width: ground_width
+    message: message
+    
+    GridLayout:
+        cols:1
+        padding: 150, 300, 150, 300
+        size: root.width - 400, root.height - 400
+
+        GridLayout:
+            cols:2
+
+            Label:
+                text: "Spring volume: (1-100)"
+
+            TextInput:
+                id: volume
+                multiline: False
+
+            Label:
+                text: "Ground size: (5-50)"
+            
+            TextInput:
+                id: ground_width
+                multiline: False
+
+        Label:
+            id: message
+            text: ""
+            color: 1,0,0,1
+
+        Button:
+            text:"Continue"
+            on_press: root.take_input(volume, ground_width)
+
+<MainWindow>:
+    name: "main"
+
+    GridLayout:
+        rows: 5
+        padding: 350, 100, 350, 600
+        size: root.width - 400, root.height - 400
+    
+        Button:
+            text: "Generate"
+            on_press: root.generate()
+
+        

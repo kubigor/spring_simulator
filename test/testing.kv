@@ -1,0 +1,35 @@
+Manager:
+    First:
+    Second:
+
+
+
+<First>:
+    name: "first"
+    
+    GridLayout:
+        rows: 5
+        padding: 150, 300, 150, 300
+        size: root.width - 400, root.height - 400
+        TextInput:
+
+            on_text: root.gen()
+
+        Button:
+            text: "move"
+            on_press: root.gen()
+            on_press: app.root.current = "second"
+
+
+<Second>:
+    name: "second"
+
+    GridLayout:
+        rows: 5
+        padding: 150, 300, 150, 300
+        size: root.width - 400, root.height - 400
+    
+        Button:
+            text: "move back"
+            on_press: root.gen()
+            on_press: app.root.current = "first"
