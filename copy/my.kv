@@ -1,15 +1,18 @@
 
-<StartWindow>:
-    name: "start"
+<Spring>:
+    name: "spring"
 
     volume: volume
     ground_width: ground_width
     message: message
     
+
     GridLayout:
+        id: table
+
         cols:1
         size: root.width - 400, root.height - 400
-        padding: 300, -300, -100, 300
+        padding: 300, -300, -100, 250
 
         GridLayout:
             cols:2
@@ -34,8 +37,6 @@
             color: 1,0,0,1
 
         Button:
-            text:"Continue"
+            text:"Generate"
             on_press: root.take_input(volume, ground_width)
 
-
-        
