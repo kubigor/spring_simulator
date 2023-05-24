@@ -1,14 +1,13 @@
 import random
+
 import pyautogui
-import time
 from kivy.app import App
 from kivy.core.window import Window
-from kivy.graphics import Rectangle, Color, Triangle
-from kivy.uix.widget import Widget
+from kivy.graphics import Color, Rectangle, Triangle
+from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
 from kivy.uix.label import Label
-from kivy.clock import Clock
-from kivy.properties import ObjectProperty
+from kivy.uix.widget import Widget
 
 
 class Spring(Widget):
@@ -64,8 +63,9 @@ class Spring(Widget):
         Window.minimum_width, Window.minimum_height = Window.size
 
         self.canvas_created = True
-        self.temporary_label = (Label(text="Prees on any green square.", font_size=18, size=(Window.width//4, Window.height//8), pos=(
-            Window.width // 8 * 3, (Window.height // 6) * 5)))
+        self.temporary_label = (Label(text="Press on any green square.",
+                                      font_size=18, size=(Window.width//4, Window.height//8), pos=(
+                                           Window.width // 8 * 3, (Window.height // 6) * 5)))
         self.add_widget(self.temporary_label)
         with self.canvas:
             self.levels = self.build_heights(ground)
@@ -74,11 +74,11 @@ class Spring(Widget):
 
     # determine the heights of blocks
     def build_heights(self, ground):
-        levels = [15]
+        levels = [12]
         for _ in range(1, ground):
             prev_level = levels[-1]
             level_change = random.randrange(-1, 2)
-            new_level = prev_level + level_change
+            new_level = max(0, prev_level + level_change)
             levels.append(new_level)
 
         return levels
